@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f7eee9" />
+    <meta
+      name="description"
+      content="A small, heartfelt apology made with love."
+    />
+    <title>I'm Sorry, My Love</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Italiana&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="grain" aria-hidden="true"></div>
+    <div class="ambient-hearts" aria-hidden="true">
+      <span>♥</span><span>♡</span><span>♥</span><span>♡</span><span>♥</span>
+    </div>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero__flower hero__flower--one" aria-hidden="true">✿</div>
+        <div class="hero__flower hero__flower--two" aria-hidden="true">✿</div>
+        <p class="eyebrow reveal">A little note from my heart</p>
+        <h1 id="hero-title" class="reveal reveal--delay-1">
+          I am truly<br /><em>sorry.</em>
+        </h1>
+        <p class="hero__intro reveal reveal--delay-2">
+          You mean more to me than my pride ever will. I made this because you
+          deserve more than a rushed message—you deserve honesty, care, and a
+          real apology.
+        </p>
+        <a class="scroll-cue reveal reveal--delay-3" href="#letter">
+          Read my heart
+          <span aria-hidden="true">↓</span>
+        </a>
+      </section>
+
+      <section class="truth section" aria-labelledby="truth-title">
+        <p class="section__number">01</p>
+        <div class="section__content">
+          <p class="eyebrow">No excuses</p>
+          <h2 id="truth-title">I know that I hurt you.</h2>
+          <p>
+            I’m not here to defend what happened or make your feelings smaller.
+            I understand that my actions caused you pain, and I take full
+            responsibility for that. You deserved patience, understanding, and
+            kindness from me.
+          </p>
+        </div>
+      </section>
+
+      <section class="promise section" aria-labelledby="promise-title">
+        <p class="section__number">02</p>
+        <div class="section__content">
+          <p class="eyebrow">More than words</p>
+          <h2 id="promise-title">What I want to do better.</h2>
+          <div class="promise-grid">
+            <article>
+              <span>01</span>
+              <h3>Listen fully</h3>
+              <p>To understand your feelings, not just wait for my turn to speak.</p>
+            </article>
+            <article>
+              <span>02</span>
+              <h3>Communicate gently</h3>
+              <p>To be honest and calm, especially when a moment feels hard.</p>
+            </article>
+            <article>
+              <span>03</span>
+              <h3>Show up consistently</h3>
+              <p>To let my everyday actions carry the weight of this apology.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="letter" class="letter-section" aria-labelledby="letter-title">
+        <div class="envelope" id="envelope">
+          <div class="envelope__back"></div>
+          <div class="letter-preview" aria-hidden="true">
+            <span>For you</span>
+            <i>♥</i>
+          </div>
+          <div class="envelope__front"></div>
+          <button class="seal" id="open-letter" type="button" aria-expanded="false">
+            <span class="seal__heart" aria-hidden="true">♥</span>
+            <span class="seal__label">Open my letter</span>
+          </button>
+        </div>
+        <p class="letter-hint" id="letter-hint">There is something I need to say</p>
+
+        <dialog class="letter-dialog" id="letter-dialog" aria-labelledby="letter-title">
+          <button class="letter-dialog__close" id="close-letter" type="button" aria-label="Close letter">×</button>
+          <div class="letter-card">
+            <p class="letter-card__date">From me, with all my heart</p>
+            <h2 id="letter-title">My love,</h2>
+            <p>
+              I wish I could take back the moment I hurt you, but I know a real
+              apology is not about erasing the past. It is about learning from it
+              and choosing to be better from here.
+            </p>
+            <p>
+              I am sorry for the hurt I caused. I am sorry for the moments when
+              I did not make you feel heard, valued, or safe with my heart. You
+              are incredibly precious to me, and I hate that my actions made you
+              feel anything less than that.
+            </p>
+            <p>
+              I don’t expect this page to fix everything. I only hope it shows
+              that I mean these words, and that I’m ready to prove them with
+              patience and change. Take all the time you need. I will respect
+              your feelings, your space, and whatever you need next.
+            </p>
+            <p class="signature">I’m so sorry.<br /><em>Always yours.</em></p>
+          </div>
+        </dialog>
+      </section>
+
+      <section class="closing" aria-label="Closing message">
+        <p class="eyebrow">No pressure. Just the truth.</p>
+        <h2>I love you.<br />And I am listening.</h2>
+        <button class="heart-button" id="heart-button" type="button">
+          <span aria-hidden="true">♡</span>
+          Send a little love
+        </button>
+        <p class="heart-response" id="heart-response" aria-live="polite"></p>
+      </section>
+    </main>
+
+    <footer>
+      <p>Made with love, honesty, and hope.</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
