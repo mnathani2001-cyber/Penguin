@@ -5,6 +5,13 @@ const letterDialog = document.querySelector("#letter-dialog");
 const closeButton = document.querySelector("#close-letter");
 const heartButton = document.querySelector("#heart-button");
 const heartResponse = document.querySelector("#heart-response");
+const forgiveCard = document.querySelector("#forgive-card");
+const forgiveTitle = document.querySelector("#forgive-title");
+const forgiveNote = document.querySelector("#forgive-note");
+const answerArea = document.querySelector("#answer-area");
+const yesButton = document.querySelector("#yes-button");
+const noButton = document.querySelector("#no-button");
+const celebrationLayer = document.querySelector("#celebration-layer");
 
 openButton.addEventListener("click", () => {
   envelope.classList.add("is-open");
@@ -63,6 +70,71 @@ heartButton.addEventListener("click", () => {
   }
 });
 
+let noAttempts = 0;
+const noMessages = ["No", "Are you sure?", "Really?", "Think again 💗", "Try ‘Yes’ 😊"];
+
+function moveNoButton(event) {
+  if (event) event.preventDefault();
+  noAttempts += 1;
+  noButton.classList.add("is-dodging");
+
+  const areaWidth = answerArea.clientWidth;
+  const areaHeight = answerArea.clientHeight;
+  const buttonWidth = noButton.offsetWidth;
+  const buttonHeight = noButton.offsetHeight;
+  const maxX = Math.max(0, areaWidth - buttonWidth);
+  const maxY = Math.max(0, areaHeight - buttonHeight);
+
+  noButton.style.left = `${Math.random() * maxX}px`;
+  noButton.style.top = `${Math.random() * maxY}px`;
+  noButton.textContent = noMessages[Math.min(noAttempts, noMessages.length - 1)];
+}
+
+noButton.addEventListener("pointerenter", (event) => {
+  if (event.pointerType !== "touch") moveNoButton(event);
+});
+noButton.addEventListener("click", moveNoButton);
+
+function celebrateYes() {
+  if (forgiveCard.classList.contains("is-forgiven")) return;
+
+  forgiveCard.classList.add("is-forgiven");
+  forgiveTitle.textContent = "You made my heart so happy, Penguin!";
+  forgiveNote.textContent = "Thank you for giving us another chance. I love you. ♥";
+  yesButton.innerHTML = 'Yes! <span aria-hidden="true">♥</span>';
+  celebrationLayer.classList.add("is-active");
+
+  const colors = ["#b75d69", "#e4929c", "#8e3f4b", "#f2bac0", "#d66f7c"];
+  const heartCount = reduceMotion ? 18 : 70;
+
+  for (let index = 0; index < heartCount; index += 1) {
+    const heart = document.createElement("span");
+    heart.className = "celebration-heart";
+    heart.textContent = index % 3 === 0 ? "♡" : "♥";
+    heart.setAttribute("aria-hidden", "true");
+    heart.style.setProperty("--x", `${Math.random() * 100}%`);
+    heart.style.setProperty("--size", `${0.9 + Math.random() * 2.4}rem`);
+    heart.style.setProperty("--color", colors[index % colors.length]);
+    heart.style.setProperty("--duration", `${2.7 + Math.random() * 2.2}s`);
+    heart.style.setProperty("--delay", `${Math.random() * 1.2}s`);
+    heart.style.setProperty("--drift", `${(Math.random() - 0.5) * 190}px`);
+    heart.style.setProperty("--spin", `${(Math.random() - 0.5) * 240}deg`);
+    celebrationLayer.appendChild(heart);
+  }
+
+  const message = document.createElement("div");
+  message.className = "celebration-message";
+  message.textContent = "Yay! I love you, Penguin! 💗";
+  celebrationLayer.appendChild(message);
+
+  window.setTimeout(() => {
+    celebrationLayer.replaceChildren();
+    celebrationLayer.classList.remove("is-active");
+  }, 6000);
+}
+
+yesButton.addEventListener("click", celebrateYes);
+
 const revealObserver = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
@@ -75,7 +147,7 @@ const revealObserver = new IntersectionObserver(
   { threshold: 0.14 },
 );
 
-document.querySelectorAll(".section__content, .promise-grid article, .envelope, .closing h2").forEach((element, index) => {
+document.querySelectorAll(".section__content, .promise-grid article, .envelope, .forgive-card, .closing h2").forEach((element, index) => {
   element.classList.add("scroll-reveal");
   element.style.transitionDelay = `${Math.min(index % 3, 2) * 100}ms`;
   revealObserver.observe(element);
